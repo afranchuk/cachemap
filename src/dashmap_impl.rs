@@ -52,7 +52,9 @@ impl<K: Hash + Eq, V: ?Sized, S: BuildHasher + Default + Clone> Default for Cach
     }
 }
 
-impl<K: Hash + Eq, V> std::iter::FromIterator<(K, V)> for CacheMap<K, V, RandomState> {
+impl<K: Hash + Eq, V, S: BuildHasher + Default + Clone> std::iter::FromIterator<(K, V)>
+    for CacheMap<K, V, S>
+{
     fn from_iter<T>(iter: T) -> Self
     where
         T: IntoIterator<Item = (K, V)>,
