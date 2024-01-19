@@ -59,7 +59,7 @@ use abi_stable_impl::*;
 /// An insert-only map for caching the result of functions
 #[cfg_attr(feature = "abi_stable", derive(abi_stable::StableAbi))]
 #[cfg_attr(feature = "abi_stable", repr(C))]
-pub struct CacheMap<K, V, S> {
+pub struct CacheMap<K, V, S = RandomState> {
     inner: MutexImpl<HashMapImpl<K, BoxImpl<V>, S>>,
 }
 

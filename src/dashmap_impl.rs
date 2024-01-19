@@ -5,7 +5,7 @@ use std::{collections::hash_map::RandomState, hash::Hash};
 use std::{hash::BuildHasher, marker::PhantomData};
 
 /// An insert-only map for caching the result of functions
-pub struct CacheMap<K: Hash + Eq, V: ?Sized, S> {
+pub struct CacheMap<K: Hash + Eq, V: ?Sized, S = RandomState> {
     inner: DashMap<K, Arc<V>, S>,
 }
 
